@@ -53,3 +53,6 @@ desktop.ini
 # Playwright
 playwright-report/
 test-results/
+gitsync.bat 
+deploy-log.txt 
+.gitsync.lock 
