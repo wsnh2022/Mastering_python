@@ -1,0 +1,49 @@
+{
+	"Print": {
+		"prefix": "pyprint",
+		"body": [
+			"print($1)"
+		],
+		"description": "Python print statement"
+	},
+	"Input": {
+		"prefix": "pyinput",
+		"body": [
+			"${1:name} = input('${2:Enter value: }')"
+		],
+		"description": "Python input statement"
+	},
+	"For loop": {
+		"prefix": "pyfor",
+		"body": [
+			"for ${1:item} in ${2:items}:",
+			"    ${3:pass}"
+		],
+		"description": "Python for loop"
+	},
+	"While loop": {
+		"prefix": "pywhile",
+		"body": [
+			"while ${1:condition}:",
+			"    ${2:pass}"
+		],
+		"description": "Python while loop"
+	},
+	"Function": {
+		"prefix": "pydef",
+		"body": [
+			"def ${1:name}(${2:args}):",
+			"    '''${3:Description}'''",
+			"    ${4:pass}"
+		],
+		"description": "Python function"
+	},
+	"If main": {
+		"prefix": "pymain",
+		"body": [
+			"if __name__ == '__main__':",
+			"    ${1:main()}"
+		],
+		"description": "Python main block"
+	}
+}

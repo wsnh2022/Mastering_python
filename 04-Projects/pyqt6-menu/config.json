@@ -1,0 +1,40 @@
+{
+    "settings": {
+        "auto_reveal_delay_ms": 500,
+        "arrow_scroll_delay_ms": 300,
+        "menu_width_px": 230,
+        "auto_paste_enabled": true
+    },
+    "snippets": {
+        "Email Signature": {
+            "color": "#10b981",
+            "hover_border": "#34d399",
+            "versions": {
+                "v1": "Best regards,\nAlex Developer\nalex@example.com",
+                "v2": "Thanks,\nAlex",
+                "v3": "Best regards,\nAlex Developer\nalex@example.com",
+                "v4": "Thanks,\nAlex"
+            }
+        },
+        "Python Template": {
+            "color": "#a855f7",
+            "hover_border": "#c084fc",
+            "versions": {
+                "v1": "if __name__ == '__main__':\n    main()",
+                "v2": "if __name__ == '__main__':\n    main()",
+                "v3": "if __name__ == '__main__':\n    main()"
+            }
+        },
+        "New Category 3": {
+            "color": "#55ffff",
+            "hover_border": "#34d399",
+            "versions": {
+                "v1": "this is sample 1",
+                "v2": "this is sample 2",
+                "v3": "this is sample 2",
+                "v4": "this is sample 2",
+                "v5": "this is sample 2"
+            }
+        }
+    }
+}

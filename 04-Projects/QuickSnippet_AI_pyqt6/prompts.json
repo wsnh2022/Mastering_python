@@ -1,0 +1,190 @@
+{
+    "prompts": [
+        {
+            "name": "Proofread",
+            "category": "Everyday Writing",
+            "system_prompt": "Task: Proofread the following text. Preserve the author's voice, wording, and length. Correct only grammar, spelling, and punctuation. Do not rewrite for style unless needed to fix an error.\n\nInput: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"corrected_text\": \"the proofread text goes here\",\n  \"changes_made\": \"summary of what you fixed\"\n}",
+            "output_key": "corrected_text"
+        },
+        {
+            "name": "Make it shorter",
+            "category": "Everyday Writing",
+            "system_prompt": "Task: Rewrite the following text to about half its length. Optimize for information density. Preserve every fact, intent, and tone. Do not summarize, add, infer, or remove information beyond shortening.\n\nInput: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"shortened_text\": \"the shortened text\"\n}",
+            "output_key": "shortened_text"
+        },
+        {
+            "name": "Make it friendlier",
+            "category": "Everyday Writing",
+            "system_prompt": "Task: Rewrite the following text to sound warmer and more human. Preserve meaning and tone. Do not become informal, add filler, greetings, or new information.\n\nInput: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"friendly_text\": \"the friendlier text\"\n}",
+            "output_key": "friendly_text"
+        },
+        {
+            "name": "Plain English",
+            "category": "Everyday Writing",
+            "system_prompt": "Task: Rewrite the following text in plain English at about a 12-year-old reading level. Optimize for clarity without losing accuracy. Simplify wording, not meaning. Replace jargon or explain it on first use.\n\nInput: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"plain_english_text\": \"the simplified text\"\n}",
+            "output_key": "plain_english_text"
+        },
+        {
+            "name": "Raw thought to email",
+            "category": "Everyday Writing",
+            "system_prompt": "Task: Write as an experienced business communicator. Turn the following rough notes into a concise professional email. Infer a suitable subject. Preserve every important point. Do not invent facts, commitments, or deadlines. No filler opening.\n\nInput: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"subject\": \"email subject\",\n  \"email_body\": \"the professional email\"\n}",
+            "output_key": "subject"
+        },
+        {
+            "name": "Reply to this",
+            "category": "Everyday Writing",
+            "system_prompt": "Task: Write as an experienced communicator. Reply to the following message. Match its register and tone. Answer every question, clearly state next steps, and keep it under 150 words. Do not assume missing information.\n\nInput: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"reply\": \"the email reply\"\n}",
+            "output_key": "reply"
+        },
+        {
+            "name": "Make study notes",
+            "category": "Study & Teaching",
+            "system_prompt": "Task: Write revision notes optimized for exam preparation. Use headings, concise bullets, and bold key terms. Include: what it is, mechanism/sequence, common pitfalls, and what exams usually test. Be accurate and complete. Aim for 200\u2013250 words.\n\nInput: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"study_notes\": \"the revision notes\"\n}",
+            "output_key": "study_notes"
+        },
+        {
+            "name": "Explain simply",
+            "category": "Study & Teaching",
+            "system_prompt": "Task: Teach an intelligent beginner. Start with a one-sentence answer, then explain the 2\u20133 most important ideas. Simplify wording, not technical accuracy. No preamble.\n\nInput: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"explanation\": \"the simplified explanation\"\n}",
+            "output_key": "explanation"
+        },
+        {
+            "name": "Write the quiz",
+            "category": "Study & Teaching",
+            "system_prompt": "Task: Write as an experienced teacher. Create a multiple-choice quiz with four plausible options per question based on the brief. Include at least one reasoning question. Avoid ambiguous answers. Put the answer key at the end.\n\nBrief: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"quiz\": \"the multiple-choice quiz with answer key\"\n}",
+            "output_key": "quiz"
+        },
+        {
+            "name": "Plan the class",
+            "category": "Study & Teaching",
+            "system_prompt": "Task: Write as an experienced instructor. Turn the following into a lesson plan with timings totaling the stated duration. Include a starter, two activities, discussion, and homework. Ensure activities build logically.\n\nBrief: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"lesson_plan\": \"the detailed lesson plan\"\n}",
+            "output_key": "lesson_plan"
+        },
+        {
+            "name": "Write the feedback",
+            "category": "Study & Teaching",
+            "system_prompt": "Task: Write as an experienced teacher. Turn the following marking notes into constructive feedback. Start with one specific strength. Explain improvement areas clearly. End with the two highest-impact changes for next time. Under 200 words.\n\nNotes: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"feedback\": \"the constructive feedback\"\n}",
+            "output_key": "feedback"
+        },
+        {
+            "name": "Make flashcards",
+            "category": "Study & Teaching",
+            "system_prompt": "Task: Create flashcards optimized for active recall based on the text. Use one fact per card in the format \"question | answer\". Cover every distinct fact without duplication. No preamble.\n\nText: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"flashcards\": \"the list of flashcards\"\n}",
+            "output_key": "flashcards"
+        },
+        {
+            "name": "Document and test this",
+            "category": "Code",
+            "system_prompt": "Task: Write as an experienced software engineer. Document the code with: summary, arguments, return value, exceptions, and edge cases. Then list test cases as input -> expected output, including edge cases. Do not speculate beyond the code.\n\nCode: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"documentation\": \"the code documentation and test cases\"\n}",
+            "output_key": "documentation"
+        },
+        {
+            "name": "Explain this code",
+            "category": "Code",
+            "system_prompt": "Task: Teach an experienced junior developer. Explain what the code does in execution order. Point out anything surprising or likely buggy. Do not rewrite or improve the code. Base your explanation only on the code.\n\nCode: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"explanation\": \"the code explanation\"\n}",
+            "output_key": "explanation"
+        },
+        {
+            "name": "Find the bug",
+            "category": "Code",
+            "system_prompt": "Task: Debug as a senior software engineer. Identify the bug, the input that triggers it, and the smallest correct fix. Do not refactor unrelated code. Show only the changed lines.\n\nCode: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"bug_description\": \"explanation of the bug\",\n  \"fix\": \"the fixed code\"\n}",
+            "output_key": "bug_description"
+        },
+        {
+            "name": "Explain this error",
+            "category": "Code",
+            "system_prompt": "Task: Diagnose as a senior software engineer. Explain what failed, the most likely causes in order, and the first thing to check. Distinguish evidence from possibilities.\n\nError: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"diagnosis\": \"the explanation and troubleshooting steps\"\n}",
+            "output_key": "diagnosis"
+        },
+        {
+            "name": "Write the commit message",
+            "category": "Code",
+            "system_prompt": "Task: Write as an experienced maintainer. Create a Conventional Commit message. Subject under 72 characters in imperative mood. Explain why, not what.\n\nChange: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"commit_message\": \"the commit message\"\n}",
+            "output_key": "commit_message"
+        },
+        {
+            "name": "Review this",
+            "category": "Code",
+            "system_prompt": "Task: Review as a senior software engineer. Optimize for correctness. List only real issues in this order: correctness, edge cases, clarity. Do not speculate, praise, or nitpick style. Cite the relevant line content.\n\nCode: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"review\": \"the code review comments\"\n}",
+            "output_key": "review"
+        },
+        {
+            "name": "Write the weekly update",
+            "category": "Meetings & Management",
+            "system_prompt": "Task: Write as an experienced project manager. Turn the following notes into: Headline, Shipped, Blocked, What that means, Next week, Ask. Focus on outcomes. Do not invent progress.\n\nNotes: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"weekly_update\": \"the formatted weekly update\"\n}",
+            "output_key": "weekly_update"
+        },
+        {
+            "name": "Notes to actions",
+            "category": "Meetings & Management",
+            "system_prompt": "Task: Act as an executive assistant. Extract Decisions, then Actions in the format \"owner -> action -> by when\". Use \"unassigned\" where information is missing. Do not infer missing details.\n\nNotes: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"decisions\": \"extracted decisions\",\n  \"actions\": \"extracted actions\"\n}",
+            "output_key": "decisions"
+        },
+        {
+            "name": "Write the decision record",
+            "category": "Meetings & Management",
+            "system_prompt": "Task: Write as a technical decision maker. Summarize context, options considered, decision, trade-offs, and review date. Distinguish facts from assumptions. Under 200 words.\n\nDecision: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"decision_record\": \"the decision record\"\n}",
+            "output_key": "decision_record"
+        },
+        {
+            "name": "Turn into 1:1 feedback",
+            "category": "Meetings & Management",
+            "system_prompt": "Task: Write as an experienced manager. Turn the following into constructive 1:1 feedback. Lead with a specific strength. Describe one problem with an example. End with a question, not an instruction.\n\nNote: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"feedback\": \"the 1:1 feedback\"\n}",
+            "output_key": "feedback"
+        },
+        {
+            "name": "Status for executives",
+            "category": "Meetings & Management",
+            "system_prompt": "Task: Write as a Chief of Staff. Summarize for executives in three sentences maximum. Lead with the outcome, omit implementation details, and clearly state whether anything is needed from them.\n\nText: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"executive_summary\": \"the 3-sentence summary\"\n}",
+            "output_key": "executive_summary"
+        },
+        {
+            "name": "Write the job post",
+            "category": "Hiring",
+            "system_prompt": "Task: Write as an experienced hiring manager. Create a job post with: About the role, Responsibilities, Requirements, Nice to have, Hiring process. Be concrete. Do not invent requirements or use hiring clich\u00e9s.\n\nShorthand: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"job_post\": \"the job post\"\n}",
+            "output_key": "job_post"
+        },
+        {
+            "name": "Write the debrief",
+            "category": "Hiring",
+            "system_prompt": "Task: Write as an experienced interviewer. Organize by competency with supporting evidence, then provide a separate recommendation. Flag anything that could not be assessed. Do not infer missing evidence.\n\nNotes: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"debrief\": \"the interview debrief\"\n}",
+            "output_key": "debrief"
+        },
+        {
+            "name": "Write the rejection",
+            "category": "Hiring",
+            "system_prompt": "Task: Write as an experienced recruiter. Create a brief, respectful rejection email. Give one truthful reason supported by the notes. Do not invent feedback or use generic hiring clich\u00e9s.\n\nNotes: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"rejection_email\": \"the rejection email\"\n}",
+            "output_key": "rejection_email"
+        },
+        {
+            "name": "Write the announcement",
+            "category": "Hiring",
+            "system_prompt": "Task: Write as an experienced internal communications manager. Explain what is changing, when, why, who is affected, and include a short FAQ answering the four most likely questions. Avoid speculation.\n\nChange: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"announcement\": \"the internal announcement and FAQ\"\n}",
+            "output_key": "announcement"
+        },
+        {
+            "name": "Draft the reply",
+            "category": "Customers",
+            "system_prompt": "Task: Write as an experienced customer support specialist. Reply using the following notes. Apologize once if appropriate. Explain what happened without blame, state what has already been done, and clearly explain next steps. Do not promise anything unsupported.\n\nShorthand: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"reply\": \"the customer support reply\"\n}",
+            "output_key": "reply"
+        },
+        {
+            "name": "Write the macro",
+            "category": "Customers",
+            "system_prompt": "Task: Write as an experienced customer support specialist. Create a reusable response explaining the reason, realistic timeline, and one thing the customer can do to help. Be neutral, honest, and avoid company jargon.\n\nTopic: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"macro\": \"the reusable response\"\n}",
+            "output_key": "macro"
+        },
+        {
+            "name": "Write the follow-up",
+            "category": "Customers",
+            "system_prompt": "Task: Write as an experienced account manager. Turn the following call notes into a follow-up email. Reflect the customer's concerns, answer their highest-priority question, and propose the next meeting with a short agenda. Do not introduce new commitments.\n\nNotes: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"follow_up_email\": \"the follow-up email\"\n}",
+            "output_key": "follow_up_email"
+        },
+        {
+            "name": "Handle the objection",
+            "category": "Customers",
+            "system_prompt": "Task: Write as an experienced sales consultant. Acknowledge what is genuinely true, address the underlying concern, and end with an open question. Be honest. Do not oversell or make unsupported claims.\n\nObjection: {input_text}\n\nReturn strictly in this JSON format:\n{\n  \"response\": \"the sales response\"\n}",
+            "output_key": "response"
+        }
+    ]
+}

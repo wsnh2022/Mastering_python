@@ -1,0 +1,433 @@
+Great topic. VS Code snippets are one of the highest ROI tools for a developer. If you learn snippets well, you can type repetitive code, markdown templates, README structures, and even project skeletons in seconds.
+
+I’ll teach this like a beginner workshop, but using practices that professionals actually use.
+
+### What is a VS Code snippet?
+
+A snippet is a text template that expands when you type a short keyword.
+
+Example:
+
+* You type: `pyprint`
+
+* Press Tab
+
+* VS Code inserts:
+
+Python
+
+Run
+
+```
+print()
+```
+
+Your cursor is placed inside the parentheses automatically.
+
+### The one-time setup
+
+### Step 1: Open snippet editor
+
+* Press Ctrl + Shift + P
+
+* Type Configure User Snippets
+
+* Choose one:
+
+  * python.json - snippets only for Python files
+
+  * markdown.json - snippets only for Markdown
+
+  * New Global Snippets file - snippets available everywhere
+
+For learning Python, choose python.json first.
+
+### Your first snippet
+
+Paste this into `python.json`:
+
+JSON
+
+```
+{
+  "Print statement": {
+    "prefix": "pyprint",
+    "body": [
+      "print($1)"
+    ],
+    "description": "Python print statement"
+  }
+}
+```
+
+### Test it
+
+In a `.py` file:
+
+* Type `pyprint`
+
+* Press Tab
+
+Result:
+
+Python
+
+Run
+
+```
+print()
+```
+
+Cursor appears between `(` and `)`.
+
+### Understanding snippet anatomy
+
+JSON
+
+```
+{
+  "Print statement": {
+    "prefix": "pyprint",
+    "body": [
+      "print($1)"
+    ],
+    "description": "Python print statement"
+  }
+}
+```
+
+| Part              | Meaning                           |
+| ----------------- | --------------------------------- |
+| "Print statement" | Snippet name shown in suggestions |
+| prefix            | What you type                     |
+| body              | Text inserted                     |
+| description       | Help text                         |
+| $1                | First cursor position             |
+
+### The most important thing: placeholders
+
+### Single cursor
+
+JSON
+
+```
+"body": [
+  "name = $1"
+]
+```
+
+Expands to:
+
+Python
+
+Run
+
+```
+name =
+```
+
+Cursor waits after `=`.
+
+### Multiple tab stops
+
+JSON
+
+```
+"body": [
+  "for ${1:item} in ${2:items}:",
+  "    ${3:pass}"
+]
+```
+
+Type `pyfor` → Tab through:
+
+Python
+
+Run
+
+```
+for item in items:
+    pass
+```
+
+* First Tab selects `item`
+
+* Second Tab selects `items`
+
+* Third Tab selects `pass`
+
+This is the feature that makes snippets powerful.
+
+### Create a useful Python snippet
+
+JSON
+
+```
+{
+  "Python for loop": {
+    "prefix": "pyfor",
+    "body": [
+      "for ${1:item} in ${2:items}:",
+      "    ${3:pass}"
+    ],
+    "description": "Python for loop"
+  }
+}
+```
+
+Try typing `pyfor`.
+
+### Multi-line snippets
+
+Example: function template.
+
+JSON
+
+```
+{
+  "Python function": {
+    "prefix": "pydef",
+    "body": [
+      "def ${1:function_name}(${2:args}):",
+      "    \\"\\"\\"${3:Description}\\"\\"\\"",
+      "    ${4:pass}"
+    ],
+    "description": "Python function template"
+  }
+}
+```
+
+Expands to:
+
+Python
+
+Run
+
+```
+def function_name(args):
+    """Description"""
+    pass
+```
+
+### My recommended starter pack for you
+
+Put all of these in `python.json`.
+
+JSON
+
+```
+{
+    "Print": {
+        "prefix": "pyprint",
+        "body": [
+            "print($1)"
+        ],
+        "description": "Python print statement"
+    },
+
+    "Input": {
+        "prefix": "pyinput",
+        "body": [
+            "${1:name} = input('${2:Enter value: }')"
+        ],
+        "description": "Python input statement"
+    },
+
+    "For loop": {
+        "prefix": "pyfor",
+        "body": [
+            "for ${1:item} in ${2:items}:",
+            "    ${3:pass}"
+        ],
+        "description": "Python for loop"
+    },
+
+    "While loop": {
+        "prefix": "pywhile",
+        "body": [
+            "while ${1:condition}:",
+            "    ${2:pass}"
+        ],
+        "description": "Python while loop"
+    },
+
+    "Function": {
+        "prefix": "pydef",
+        "body": [
+            "def ${1:name}(${2:args}):",
+            "    '''${3:Description}'''",
+            "    ${4:pass}"
+        ],
+        "description": "Python function"
+    },
+
+    "If main": {
+        "prefix": "pymain",
+        "body": [
+            "if __name__ == '__main__':",
+            "    ${1:main()}"
+        ],
+        "description": "Python main block"
+    }
+}
+```
+
+These six snippets cover a huge percentage of beginner Python typing.
+
+### Snippets for Markdown (very useful for your notes)
+
+Open `markdown.json` and add:
+
+JSON
+
+```
+{
+  "Daily note": {
+    "prefix": "dnote",
+    "body": [
+      "# Day ${1:number}",
+      "",
+      "## Goal",
+      "- ${2:goal}",
+      "",
+      "## What I learned",
+      "- ${3:topic}",
+      "",
+      "## Problems faced",
+      "- ${4:problem}",
+      "",
+      "## Next step",
+      "- ${5:next step}"
+    ]
+  }
+}
+```
+
+Type `dnote` in a `.md` file and press Tab.
+
+### Advanced feature: same value in multiple places
+
+Use the same placeholder number.
+
+JSON
+
+```
+"body": [
+  "def ${1:name}():",
+  "    print(\\"${1:name}\\")"
+]
+```
+
+If you type `greet`, both places become `greet`.
+
+Result:
+
+Python
+
+Run
+
+```
+def greet():
+    print("greet")
+```
+
+This feels magical when you first use it.
+
+### File template snippets
+
+Create a full Python script instantly.
+
+JSON
+
+```
+{
+  "Python script template": {
+    "prefix": "pyscript",
+    "body": [
+      "\\"\\"\\"${1:Script description}\\"\\"\\"",
+      "",
+      "from pathlib import Path",
+      "",
+      "",
+      "def main():",
+      "    ${2:pass}",
+      "",
+      "",
+      "if __name__ == \\"__main__\\":",
+      "    main()"
+    ]
+  }
+}
+```
+
+Type `pyscript` and you have a clean starter file.
+
+### Professional uses of snippets
+
+Engineers commonly create snippets for:
+
+* logging blocks,
+
+* API request templates,
+
+* SQL query templates,
+
+* FastAPI route templates,
+
+* Playwright test templates,
+
+* README sections,
+
+* Docker compose skeletons,
+
+* GitHub Actions workflows.
+
+Snippets are not just for beginners.
+
+### Best practices
+
+Keep prefixes short but unique
+
+Good: `pyfor`, `pydef`, `pymain`
+
+Use lowercase
+
+Easier to type quickly.
+
+Group by language
+
+Python snippets in `python.json`, Markdown in `markdown.json`.
+
+Add descriptions
+
+Future-you will thank you.
+
+Start with 5-10 snippets only
+
+Too many snippets become hard to remember.
+
+### Your first 15-minute exercise
+
+Create these three snippets yourself without copying:
+
+* `pyprint` → `print()`
+
+* `pyfor` → for loop
+
+* `pymain` → main block
+
+Then open a new Python file and expand each one.
+
+If you can do that from memory, you’ve learned the core of VS Code snippets.
+
+### The one mental model to remember
+
+Think of snippets as your personal keyboard shortcuts for thinking patterns.
+
+* `pyfor` = “I need iteration”
+
+* `pydef` = “I need a function”
+
+* `pymain` = “I need an executable script”
+
+The goal is not typing less; it is starting the structure instantly so your brain focuses on the logic.
