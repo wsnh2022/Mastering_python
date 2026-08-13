@@ -45,10 +45,10 @@ Each study day, jot down:
 ---
 ## Phase 0 – Setup & Basics
 *Days 1-2*
-- [x] Install Python (3.12+) and a code editor (VS Code / PyCharm) - your two core tools; everything else runs through these
-- [x] Run Python scripts from the terminal - `python script.py`, not just clicking "run" in an editor; you need this for automation later
-- [x] Use the command line on your OS (PowerShell or Linux/macOS shell) - navigating folders (`cd`), listing files (`ls`/`dir`), running commands
-- [x] Install packages with `pip` - `pip install requests`; how you add libraries other people wrote
+- [ ] Install Python (3.12+) and a code editor (VS Code / PyCharm) - your two core tools; everything else runs through these
+- [ ] Run Python scripts from the terminal - `python script.py`, not just clicking "run" in an editor; you need this for automation later
+- [ ] Use the command line on your OS (PowerShell or Linux/macOS shell) - navigating folders (`cd`), listing files (`ls`/`dir`), running commands
+- [ ] Install packages with `pip` - `pip install requests`; how you add libraries other people wrote
 - [ ] Create and activate a virtual environment - `python -m venv venv`; keeps each project's packages isolated so they don't conflict
 - [ ] Try `uv` as a faster alternative to pip + venv - newer tool, does the same job much faster; worth adopting early
 - [ ] Initialize a Git repository - `git init`; turns a folder into something Git can track changes in
@@ -220,6 +220,9 @@ Each study day, jot down:
 - [ ] Enable and view trace on failure - Playwright's trace viewer replays exactly what happened step by step
 - [ ] Use `pytest-playwright` fixtures (builds directly on Phase 2 pytest fundamentals) - `page` fixture and friends, wired into pytest
 - [ ] Save and reuse authentication state (storage state) - log in once, reuse the session across tests instead of logging in every time
+- [ ] Understand `BrowserContext` isolation (cookies, storage, cache) - each context is a separate browser profile; pages within the same context share session state, so multiple pages ≠ multiple identities
+- [ ] Use persistent contexts (`launch_persistent_context`) vs storage-state files - persistent contexts write to a real user-data dir on disk (closer to a real browser profile); storage-state is a portable snapshot you load into a fresh context (lighter, easier to version and use in CI) - know which one fits the task
+- [ ] Set per-context proxy and locale/timezone settings - `browser.new_context(proxy={...}, locale=..., timezone_id=...)`; matters once multiple "accounts" need to look like separate, independent users rather than one identity wearing different cookies
 - [ ] Run tests across multiple browsers - Chromium, Firefox, WebKit; catching browser-specific bugs
 
 ### Playwright Best Practices
@@ -243,6 +246,7 @@ Each study day, jot down:
 ### Projects
 *Days 78-86*
 - [ ] Login automation for a demo site - practice the auth + storage state pattern end to end
+- [ ] Multi-account isolation test (2-3 accounts, separate contexts) - log into a demo site with 2-3 different accounts using separate persistent contexts or storage-state files, ideally with different proxy/locale settings per profile - then write an assertion that actively checks Account A's context never shows Account B's session data (don't just eyeball it - a real assertion that would fail on cookie/session bleed), and run it both locally and in CI, since parallel execution in CI is where shared-state bugs actually surface (local runs often hide the bug through timing alone)
 - [ ] Form filling automation (repeatable workflow) - automate a task a human would otherwise do by hand repeatedly
 - [ ] Static site scraper (requests + BeautifulSoup) - apply Phase 3's HTML basics to a real target
 - [ ] Dynamic site scraper (Playwright) - scrape a page that requires JavaScript rendering, which `requests` alone can't handle
